@@ -187,4 +187,34 @@ public class MatrixOperations
 
         return product;
     }
+    public int MaxSumDiagonals()
+    {
+        int rows = IntMatrix.GetLength(0);
+        int columns = IntMatrix.GetLength(1);
+
+        int maxSum = int.MinValue;
+
+        for (int d = 0; d < rows + columns - 1; d++)
+        {
+            int sum = 0;
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if (i + j == d)
+                    {
+                        sum += IntMatrix[i, j];
+                    }
+                }
+            }
+
+            if (sum > maxSum)
+            {
+                maxSum = sum;
+            }
+        }
+
+        return maxSum;
+    }
 }
