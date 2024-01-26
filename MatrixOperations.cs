@@ -278,4 +278,51 @@ public class MatrixOperations
 
         return minSum;
     }
+    public int SumOfColumnsWithNegatives()
+    {
+        int rows = IntMatrix.GetLength(0);
+        int columns = IntMatrix.GetLength(1);
+
+        int sum = 0;
+
+        for (int j = 0; j < columns; j++)
+        {
+            bool hasNegative = false;
+
+            for (int i = 0; i < rows; i++)
+            {
+                if (IntMatrix[i, j] < 0)
+                {
+                    hasNegative = true;
+                    break;
+                }
+            }
+
+            if (hasNegative)
+            {
+                for (int i = 0; i < rows; i++)
+                {
+                    sum += IntMatrix[i, j];
+                }
+            }
+        }
+        return sum;
+    }
+    public int[,] Transpose()
+    {
+        int rows = IntMatrix.GetLength(0);
+        int columns = IntMatrix.GetLength(1);
+
+        int[,] transposedMatrix = new int[columns, rows];
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                transposedMatrix[j, i] = IntMatrix[i, j];
+            }
+        }
+
+        return transposedMatrix;
+    }
 }
