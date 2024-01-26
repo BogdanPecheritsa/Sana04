@@ -62,4 +62,58 @@ public class MatrixOperations
         var maxRepeatingElement = dict.Where(KeyValuePair => KeyValuePair.Value > 1).OrderByDescending(KeyValuePair => KeyValuePair.Value).FirstOrDefault();
         return maxRepeatingElement.Key;
     }
+    public int RowsWithoutZerosCount()
+    {
+        int count = 0;
+        int rows = IntMatrix.GetLength(0);
+        int columns = IntMatrix.GetLength(1);
+
+        for (int i = 0; i < rows; i++)
+        {
+            bool hasZero = false;
+
+            for (int j = 0; j < columns; j++)
+            {
+                if (IntMatrix[i, j] == 0)
+                {
+                    hasZero = true;
+                    break;
+                }
+            }
+
+            if (!hasZero)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+    public int ColumnsWithZeroElementCount()
+    {
+        int count = 0;
+        int rows = IntMatrix.GetLength(0);
+        int columns = IntMatrix.GetLength(1);
+
+        for (int j = 0; j < columns; j++)
+        {
+            bool hasZero = false;
+
+            for (int i = 0; i < rows; i++)
+            {
+                if (IntMatrix[i, j] == 0)
+                {
+                    hasZero = true;
+                    break;
+                }
+            }
+
+            if (hasZero)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
 }
