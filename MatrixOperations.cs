@@ -17,4 +17,23 @@ public class MatrixOperations
             }
         }
     }
+    public int CountPositiveElements()
+    {
+        int count = 0;
+        int rows = IntMatrix.GetLength(0);
+        int columns = IntMatrix.GetLength(1);
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                if (IntMatrix[i, j] > 0)
+                {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
 }
