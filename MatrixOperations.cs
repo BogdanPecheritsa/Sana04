@@ -217,4 +217,65 @@ public class MatrixOperations
 
         return maxSum;
     }
+    public int SumOfColumnsWithoutNegatives()
+    {
+        int rows = IntMatrix.GetLength(0);
+        int columns = IntMatrix.GetLength(1);
+
+        int sum = 0;
+
+        for (int j = 0; j < columns; j++)
+        {
+            bool hasNegative = false;
+
+            for (int i = 0; j < rows; j++)
+            {
+                if (IntMatrix[i, j] < 0)
+                {
+                    hasNegative = true;
+                    break;
+                }
+            }
+
+            if (!hasNegative)
+            {
+                for (int i = 0; i < rows; i++)
+                {
+                    sum += IntMatrix[i, j];
+                }
+            }
+        }
+
+        return sum;
+    }
+    public int MinSumOfDiagonals()
+    {
+        int rows = IntMatrix.GetLength(0);
+        int columns = IntMatrix.GetLength(1);
+
+        int minSum = int.MaxValue;
+
+        for (int d = 0; d < rows + columns - 1; d++)
+        {
+            int sum = 0;
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    if (i + j == d)
+                    {
+                        sum += Math.Abs(IntMatrix[i, j]);
+                    }
+                }
+            }
+
+            if (sum < minSum)
+            {
+                minSum = sum;
+            }
+        }
+
+        return minSum;
+    }
 }
