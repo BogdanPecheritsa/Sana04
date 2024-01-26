@@ -13,7 +13,7 @@ do
         MatrixOperations matrixOps = new MatrixOperations(rows, columns);
 
         int[,] matrix = matrixOps.IntMatrix;
-        Console.WriteLine("Generated Integer Matrix:");
+        Console.WriteLine("\nGenerated Integer Matrix:");
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
@@ -56,5 +56,3 @@ do
         Console.WriteLine($"An error occurred: {ex.Message}");
     }
 } while (!validInput);
-
-Console.WriteLine("Program continues...");
