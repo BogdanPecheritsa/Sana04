@@ -116,4 +116,44 @@ public class MatrixOperations
 
         return count;
     }
+    public int LongestSeriesRowNumber()
+    {
+        int rows = IntMatrix.GetLength(0);
+        int columns = IntMatrix.GetLength(1);
+
+        int maxLength = 0;
+        int currentLength = 1;
+        int rowNumber = 0;
+
+        for (int i = 0; i < rows; i++)
+        {
+            currentLength = 1;
+
+            for (int j = 1; j < columns; j++)
+            {
+                if (IntMatrix[i, j] == IntMatrix[i, j - 1])
+                {
+                    currentLength++;
+                }
+                else
+                {
+                    if (currentLength > maxLength)
+                    {
+                        maxLength = currentLength;
+                        rowNumber = i;
+                    }
+
+                    currentLength = 1;
+                }
+            }
+
+            if (currentLength > maxLength)
+            {
+                maxLength = currentLength;
+                rowNumber = i;
+            }
+        }
+
+        return rowNumber;
+    }
 }
