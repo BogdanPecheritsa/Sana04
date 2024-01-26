@@ -156,4 +156,35 @@ public class MatrixOperations
 
         return rowNumber;
     }
+    public int ProductOfNonNegativeRows()
+    {
+        int rows = IntMatrix.GetLength(0);
+        int columns = IntMatrix.GetLength(1);
+
+        int product = 1;
+
+        for (int i = 0; i < rows; i++)
+        {
+            bool hasNegative = false;
+
+            for (int j = 0; j < columns; j++)
+            {
+                if (IntMatrix[i, j] < 0)
+                {
+                    hasNegative = true;
+                    break;
+                }
+            }
+
+            if (!hasNegative)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    product *= IntMatrix[i, j];
+                }
+            }
+        }
+
+        return product;
+    }
 }
