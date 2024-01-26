@@ -36,4 +36,30 @@ public class MatrixOperations
 
         return count;
     }
+    public int MaxRepeatingElement()
+    {
+        var dict = new Dictionary<int, int>();
+        int rows = IntMatrix.GetLength(0);
+        int columns = IntMatrix.GetLength(1);
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                int currentElement = IntMatrix[i, j];
+
+                if (dict.ContainsKey(currentElement))
+                {
+                    dict[currentElement]++;
+                }
+                else
+                {
+                    dict[currentElement] = 1;
+                }
+            }
+        }
+
+        var maxRepeatingElement = dict.Where(KeyValuePair => KeyValuePair.Value > 1).OrderByDescending(KeyValuePair => KeyValuePair.Value).FirstOrDefault();
+        return maxRepeatingElement.Key;
+    }
 }
